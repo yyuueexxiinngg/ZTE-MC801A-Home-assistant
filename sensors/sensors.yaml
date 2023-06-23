@@ -25,12 +25,12 @@
       unit_of_measurement: "GB"
     zte_realtime_download_speed:
       friendly_name: "Realtime download speed"
-      unique_id: sensor.realtime_rx_thrpt
+      unique_id: sensor.zte_realtime_download_speed
       value_template: '{{ ((state_attr("sensor.zte_router_info", "realtime_rx_thrpt") |float) / 1024 / 1024) | round(2) }}'
       unit_of_measurement: "MB/s"
     zte_realtime_upload_speed:
       friendly_name: "Realtime upload speed"
-      unique_id: sensor.realtime_tx_thrpt
+      unique_id: sensor.zte_realtime_upload_speed
       value_template: '{{ ((state_attr("sensor.zte_router_info", "realtime_tx_thrpt") |float) / 1024 / 1024) | round(2) }}'
       unit_of_measurement: "MB/s"
 

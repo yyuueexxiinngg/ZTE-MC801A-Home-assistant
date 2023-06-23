@@ -214,13 +214,14 @@ ha_select = int(sys.argv[1])
 
 if ha_select == 1:
     time.sleep(2)
-    zteInstance.parse_sms()
     result = zteInstance.parse_sms()
-    json_str = json.dumps(result)
     test = json.loads(result)
-    first_message = test["messages"][0]
-    first_message_json = json.dumps(first_message)
-    print(first_message_json)
+    if len(test["messages"]) == 0:
+        print("No messages")
+    else:
+        first_message = test["messages"][0]
+        first_message_json = json.dumps(first_message)
+        print(first_message_json)
 elif ha_select == 2:
     zteInstance.send_sms()
 elif ha_select == 3:
