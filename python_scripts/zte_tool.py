@@ -111,10 +111,11 @@ class ZteRouter:
                 return
 
         ld = self.get_ld()
+        ad = self.get_ad()
         hash_password = get_sha256_hash(self.password).upper()
         zte_pass = get_sha256_hash(hash_password + ld).upper()
-        payload = {"goformId": "LOGIN_MULTI_USER", "user": self.user, "password": zte_pass}
-        self.set_req(payload)
+        payload = {"goformId": "LOGIN_MULTI_USER", "user": self.user, "password": zte_pass, "AD": ad}
+        r = self.set_req(payload)
         with open(self.cookie_file_path, 'wb') as f:
             pickle.dump(self.session.cookies, f)
 
